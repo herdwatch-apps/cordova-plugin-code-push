@@ -25,7 +25,7 @@ var CodePushUtil = require("./codePushUtil");
 var HttpRequester = (function () {
     function HttpRequester(contentType) {
         cordova.plugin.http.setHeader("X-CodePush-Plugin-Name", "native-code-push");
-        cordova.plugin.http.setHeader("X-CodePush-Plugin-Version", cordova.require("cordova/plugin_list").metadata["cordova-plugin-code-push"]);
+        cordova.plugin.http.setHeader("X-CodePush-Plugin-Version", cordova.require("cordova/plugin_list").metadata["@herdwatch/cordova-plugin-code-push"]);
         cordova.plugin.http.setHeader("X-CodePush-SDK-Version", cordova.require("cordova/plugin_list").metadata["code-push"]);
         if (contentType) {
             cordova.plugin.http.setHeader("Content-Type", contentType);
