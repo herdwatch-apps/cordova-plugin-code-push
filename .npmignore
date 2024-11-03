@@ -1,5 +1,8 @@
 .npmignore
 .gitignore
+.idea
+.vscode
+.github
 gulpfile.js
 node_modules/*
 samples/*

@@ -65,7 +65,10 @@ You can find more information in our [documentation](https://github.com/microsof
 Once you've followed the general-purpose ["getting started"](https://docs.microsoft.com/en-us/appcenter/distribution/codepush/) instructions for setting up your CodePush account, you can start CodePush-ifying your Cordova app by running the following command from within your app's root directory:
 
 ```shell
-cordova plugin add cordova-plugin-code-push@latest
+cordova plugin add @herdwatch/cordova-plugin-code-push@latest
+cordova plugin add @herdwatch/cordova-plugin-advanced-http@latest
+cordova plugin add @herdwatch/code-push@latest
+
 ```
 
 With the CodePush plugin installed, configure your app to use it via the following steps:

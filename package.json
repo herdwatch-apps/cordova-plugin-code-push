@@ -1,9 +1,9 @@
 {
-  "name": "cordova-plugin-code-push",
-  "version": "2.0.6",
+  "name": "@herdwatch/cordova-plugin-code-push",
+  "version": "2.0.11",
   "description": "CodePush Plugin for Apache Cordova",
   "cordova": {
-    "id": "cordova-plugin-code-push",
+    "id": "@herdwatch/cordova-plugin-code-push",
     "platforms": [
       "android",
       "ios"
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Microsoft/cordova-plugin-code-push"
+    "url": "https://github.com/herdwatch-apps/cordova-plugin-code-push"
   },
   "keywords": [
     "cordova",
