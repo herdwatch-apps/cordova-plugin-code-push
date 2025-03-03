@@ -1,6 +1,6 @@
 {
   "name": "@herdwatch/cordova-plugin-code-push",
-  "version": "2.0.11",
+  "version": "2.0.12",
   "description": "CodePush Plugin for Apache Cordova",
   "cordova": {
     "id": "@herdwatch/cordova-plugin-code-push",

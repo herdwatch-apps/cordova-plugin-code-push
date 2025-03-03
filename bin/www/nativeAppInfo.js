@@ -9,6 +9,8 @@
 
 "use strict";
 var DefaultServerUrl = "https://api.appcenter.ms/";
+var WindowPreferenceServerUrl = "CodePushServerUrl";
+var WindowPreferenceDeploymentKey = "CodePushDeploymentKey";
 var NativeAppInfo = (function () {
     function NativeAppInfo() {
     }
@@ -16,6 +18,12 @@ var NativeAppInfo = (function () {
         var timestampSuccess = function (timestamp) { callback(null, timestamp); };
         var timestampError = function () { callback(new Error("Could not get application timestamp."), null); };
         cordova.exec(timestampSuccess, timestampError, "CodePush", "getNativeBuildTime", []);
+    };
+    NativeAppInfo.getWindowPreference = function (key) {
+        if (typeof window === "undefined") {
+            return undefined;
+        }
+        return window[key];
     };
     NativeAppInfo.getApplicationVersion = function (callback) {
         var versionSuccess = function (version) { callback(null, version); };
@@ -28,11 +36,19 @@ var NativeAppInfo = (function () {
         cordova.exec(binaryHashSuccess, binaryHashError, "CodePush", "getBinaryHash", []);
     };
     NativeAppInfo.getServerURL = function (serverCallback) {
+        var windowServerUrl = NativeAppInfo.getWindowPreference(WindowPreferenceServerUrl);
+        if (windowServerUrl) {
+            return serverCallback(null, windowServerUrl);
+        }
         var serverSuccess = function (serverURL) { serverCallback(null, serverURL); };
         var serverError = function () { serverCallback(null, DefaultServerUrl); };
         cordova.exec(serverSuccess, serverError, "CodePush", "getServerURL", []);
     };
     NativeAppInfo.getDeploymentKey = function (deploymentKeyCallback) {
+        var windowDeploymentKey = NativeAppInfo.getWindowPreference(WindowPreferenceDeploymentKey);
+        if (windowDeploymentKey) {
+            return deploymentKeyCallback(null, windowDeploymentKey);
+        }
         var deploymentSuccess = function (deploymentKey) { deploymentKeyCallback(null, deploymentKey); };
         var deploymentError = function () { deploymentKeyCallback(new Error("Deployment key not found."), null); };
         cordova.exec(deploymentSuccess, deploymentError, "CodePush", "getDeploymentKey", []);
