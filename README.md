@@ -4,6 +4,18 @@
 
 # Apache Cordova Plugin for CodePush
 
+## Why this fork exists
+
+Forked from [upstream](https://github.com/microsoft/cordova-plugin-code-push) (archived by Microsoft since 2021) because we needed to migrate off App Center's retired CodePush domain, add real download-progress reporting, and fix Android's asset-path resolution for our WebView setup.
+
+Published as [`@herdwatch/cordova-plugin-code-push`](https://www.npmjs.com/package/@herdwatch/cordova-plugin-code-push).
+
+Changes from upstream:
+- Migrated the default CodePush server URL from the retired `codepush.appcenter.ms` endpoint to `api.appcenter.ms`
+- Added a `windowPreference` override so the CodePush server URL and deployment key can be set from a JS global at runtime, not only from native `config.xml`
+- Added real download-progress reporting in `RemotePackage.download()` by switching to `cordova-plugin-advanced-http`'s `sendRequest(...)` with an `onProgress` callback, depending on our own patched fork of that plugin
+- Android: fixed the www asset-path prefix lookup to resolve from the WebView's actual scheme/hostname instead of a hardcoded `file://` path, plus compatibility fixes for newer `cordova-plugin-file` and Android Gradle
+
 This plugin provides client-side integration for the [CodePush service](https://microsoft.github.io/code-push/), allowing you to easily add a dynamic update experience to your Cordova app(s).
 
 <!-- Cordova Catalog -->
